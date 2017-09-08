@@ -1,0 +1,24 @@
+{
+  "name": "nodbstore",
+  "version": "0.0.1-beta.0",
+  "description": "Simple db working with memory and can be extended by custom storage",
+  "main": "nodbstore.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Westixy/nodbstore.git"
+  },
+  "keywords": [
+    "database",
+    "embded",
+    "node",
+    "web"
+  ],
+  "author": "Westixy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Westixy/nodbstore/issues"
+  },
+  "homepage": "https://github.com/Westixy/nodbstore#readme"
+}
