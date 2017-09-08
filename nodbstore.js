@@ -57,8 +57,9 @@ class NoDBStore {
    * Will write in all storage
    */
   write() {
+    const json = this.toJson()
     for (let i = 0; i < this._stores.length; i++) {
-      this._stores[i].write()
+      this._stores[i].write(json)
     }
   }
 
