@@ -1,4 +1,5 @@
 # NoDBStore
+
 Simple database working on memory and can have multiple storage
 
 it will be use for small data that need to be stored easily with a simple api
@@ -12,7 +13,7 @@ it will be use for small data that need to be stored easily with a simple api
 Only in memory
 
 ```js
-const nodbstore = require('nodbsync')
+const nodbstore = require('nodbstore')
 // create a database (a simple table)
 const db = new nodbstore()
 ```
