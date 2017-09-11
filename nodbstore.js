@@ -220,12 +220,12 @@ class NoDBStore {
     if (fromEnd === false) {
       for (let i = 0; i < this.data.length; i++) {
         const entry = this.data[i]
-        if (filter(entry, i) === true) return { ...entry, _index: i }
+        if (filter(entry, i) === true) return entry
       }
     } else {
       for (let i = this.data.length - 1; i > 0; i--) {
         const entry = this.data[i]
-        if (filter(entry, i) === true) return { ...entry, _index: i }
+        if (filter(entry, i) === true) return entry
       }
     }
 
@@ -243,7 +243,7 @@ class NoDBStore {
 
     for (let i = 0; i < this.data.length; i++) {
       const entry = this.data[i]
-      if (filter(entry, i) === true) res.push({ ...entry, _index: i })
+      if (filter(entry, i) === true) res.push(entry)
     }
 
     return res
