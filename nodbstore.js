@@ -28,7 +28,11 @@ class NoDBStore {
    * @param NoDBStore.Storage store the storage to add
    */
   addStore(store) {
-    if (store instanceof Storage) {
+    if (
+      typeof store.init === 'function' &&
+      typeof store.write === 'function' &&
+      typeof store.load === 'function'      
+    ) {
       store.nodb = this
       store.init()
       this._stores.push(store)
