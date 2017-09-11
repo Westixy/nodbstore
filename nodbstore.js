@@ -90,6 +90,7 @@ class NoDBStore {
   }
 
   _update_data() {
+    this._data={}    
     for (let i = 0; i < this.data.length; i++) {
       const d = this.data[i]
       this._data[d._id] = d
