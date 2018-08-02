@@ -22,14 +22,14 @@ const db = new nodbstore()
 
 ```js
 // O(1)
-const entry = db.put({some:'data',and:['more','if','you','want']})
+const entry = db.put({ some: 'data', and: ['more', 'if', 'you', 'want'] })
 ```
 
 ### edit an element
 
 ```js
 // O(1)
-const editedEntry = db.put({ _id: entry._id, add:'a field', some:undefined })
+const editedEntry = db.put({ _id: entry._id, add: 'a field', some: undefined })
 ```
 
 ### remove an element
@@ -51,10 +51,10 @@ const gettedEntry = db.get(entry._id)
 ```js
 // O(n)
 // stop when it finded one
-const entry = db.findOne( entry => entry.some === 'data' )
+const entry = db.findOne(entry => entry.some === 'data')
 
 // start from the end
-const entry = db.findOne( entry => entry.some === 'data', true )
+const entry = db.findOne(entry => entry.some === 'data', true)
 
 // return null if it doesnt find something
 ```
@@ -64,7 +64,7 @@ const entry = db.findOne( entry => entry.some === 'data', true )
 ```js
 // O(n)
 // always return an array
-const entries = db.find( entry => entry.some === 'data' )
+const entries = db.find(entry => entry.some === 'data')
 ```
 
 ### export
@@ -95,11 +95,23 @@ db.loadJson(JSON.stringify(exportedDbObject))
 
 ```js
 class NewStore extends nodbstore.Storage {
-  write(json) {
+  write(json) { // trigger when some data are updated
+    // you can add test if you want to skip write in some case
+    if (console.log === undefined) return
     this.nodb // the instance of the database
     console.log(json)
     json === this.nodb.toJson() // -> true
   }
+  // can be omited
+  load() { // called manuall or with nodb.loadFromStore( store )
+    this.nodb.loadJson(/* json of db obtained with love */)
+  }
+  // can be omited
+  init() { // trigger when store is added to nodb
+    this.data.that.I.will.use.later = 'some'
+    // or do WTFYW
+  }
+
 }
 
 db.addStore(new NewStore())
